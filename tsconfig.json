@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        // 允许默认导入
+        "allowSyntheticDefaultImports": true,
+        // 未定义类型报错
+        "noImplicitAny": true,
+        // 当前模块版本
+        "module": "es6",
+        // 目标es
+        "target": "es5",
+        // 基本url paths前置
+        "baseUrl": ".",
+        // js 支持
+        "allowJs": true,
+        // 导入别名 搭配 webpack 别名
+        "paths": {
+            "@/*": ["./src/*"],
+            "@@/*": ["./src/Components/*"]
+        },
+        "moduleResolution": "Node",
+        "module": "es2020"
+        // "types": ["./typing.d.ts"]
+    },
+    // 编译主文件
+    "files": ["src/index.tsx", "./typing.d.ts"],
+    // 排除文件夹
+    "exclude": ["node_modules"],
+    // 可激活vscode 自动导入
+    "include": ["src/**/*"]
+}
