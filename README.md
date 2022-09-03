@@ -1,15 +1,23 @@
-# 🚀 Welcome to your new awesome project!
+# 搭建模板框架例子 webpack react
 
-This project has been created using **webpack-cli**, you can now run
+## 使用
+## 实现
+### js已实现
+- react+ts加载
+- 全局react导入
 
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+### css 已实现
+- 全局css样式
+- 组件模块化css样式
+- postcss工具
+- less
+### 自动化及其他
+- Hygen摸板快速创建
+<!-- TODO:dva全局数据流 -->
+<!-- TODO:dva局部数据流 -->
+<!-- TODO:mock数据 -->
+<!-- TODO:eslint+prettier -->
+<!-- TODO:jest测试 -->
+<!-- TODO:pages自动加载路由 -->
+<!-- TODO:图片懒加载 -->
+<!-- TODO:tailwind-css -->

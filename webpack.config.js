@@ -15,10 +15,11 @@ const stylesHandler = isProduction
  * */
 const config = {
     // 入口文件
-    entry: "./src/index.tsx",
+    entry: ["./src/index.tsx", "./src/global.css"],
     // 出口文件
     output: {
         path: path.resolve(__dirname, "dist"),
+        clean: true,
     },
     // 开发服务器
     devServer: {
@@ -47,7 +48,7 @@ const config = {
                 exclude: ["/node_modules/"],
             },
             {
-                test: /\.less$/i,
+                test: /\.(less|css)$/i,
                 use: [
                     stylesHandler,
                     {
@@ -60,12 +61,7 @@ const config = {
                         },
                     },
                     "postcss-loader",
-                    "less-loader",
                 ],
-            },
-            {
-                test: /\.css$/i,
-                use: [stylesHandler, "css-loader", "postcss-loader"],
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
@@ -81,7 +77,7 @@ const config = {
         extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
         // 加载别名
         alias: {
-            "@@": path.resolve(__dirname, "src/Components"),
+            "@@": path.resolve(__dirname, "src/components"),
             "@": path.resolve(__dirname, "src"),
         },
     },
@@ -91,7 +87,9 @@ module.exports = () => {
     if (isProduction) {
         config.mode = "production";
 
-        config.plugins.push(new MiniCssExtractPlugin());
+        config.plugins.push(
+            new MiniCssExtractPlugin({ filename: "css.[name].[hash].css" })
+        );
 
         config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
     } else {
