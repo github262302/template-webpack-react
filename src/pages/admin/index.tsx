@@ -1,6 +1,6 @@
-const App=function(){
+const App = function (props: any) {
+    const { state } = props;
+    return <div>admin:{state.init}</div>;
+};
 
-    return <div>admin</div>
-}
-
-export default App
+export default App;

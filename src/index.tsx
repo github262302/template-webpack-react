@@ -1,8 +1,17 @@
-import React from "react";
-import ReactDom from "react-dom";
 import App from "./App";
-// import("./global.css");
-// function App() {
-//     return <div>123</div>
-// }
-ReactDom.render(<App />, document.getElementById("app"));
+
+import dva, { connect } from "dva";
+
+import { initModel } from "./model/init";
+
+// 创建应用
+const app = dva();
+
+// 模型
+app.model(initModel);
+
+// 注册视图
+app.router(() => <App />);
+
+// 启动应用
+app.start("#app");

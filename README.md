@@ -1,23 +1,55 @@
 # 搭建模板框架例子 webpack react
 
-## 使用
 ## 实现
-### js已实现
-- react+ts加载
-- 全局react导入
+
+### js 已实现
+
+-   react+ts 加载
+-   全局 react 导入
+-   别名导入组件
+-   dva 全局数据流
 
 ### css 已实现
-- 全局css样式
-- 组件模块化css样式
-- postcss工具
-- less
+
+-   全局 css 样式
+-   组件模块化 css 样式
+-   postcss 工具
+-   less
+
 ### 自动化及其他
-- Hygen摸板快速创建
-<!-- TODO:dva全局数据流 -->
-<!-- TODO:dva局部数据流 -->
-<!-- TODO:mock数据 -->
-<!-- TODO:eslint+prettier -->
-<!-- TODO:jest测试 -->
-<!-- TODO:pages自动加载路由 -->
-<!-- TODO:图片懒加载 -->
-<!-- TODO:tailwind-css -->
+
+## 使用
+
+-   启动开发
+
+```
+yarn dev
+```
+
+-   启动打包
+
+```
+yarn build
+```
+
+### 使用 hygen
+
+-   创建一个组件
+
+```
+yarn hygen generator component Card
+```
+
+-   创建一个页面
+
+```
+yarn hygen generator pages user
+```
+
+-   Hygen 摸板快速创建
+    <!-- FIXME:mock数据 -->
+    <!-- FIXME:eslint+prettier -->
+    <!-- FIXME:jest测试 -->
+    <!-- FIXME:pages自动加载路由 -->
+    <!-- FIXME:图片懒加载 -->
+    <!-- FIXME:tailwind-css -->

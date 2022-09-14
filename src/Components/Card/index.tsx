@@ -1,3 +1,3 @@
-export default () => {
-    return <div>Card</div>;
+export default (props: any) => {
+    return <div>Card value:{""}</div>;
 };

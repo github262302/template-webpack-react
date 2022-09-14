@@ -6,7 +6,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const webpack = require("webpack");
 const isProduction = process.env.NODE_ENV == "production";
-
+const { routes } = require("./config/mock");
+const builds = require("builds-webpack-plugin");
 const stylesHandler = isProduction
     ? MiniCssExtractPlugin.loader
     : "style-loader";
@@ -25,6 +26,12 @@ const config = {
     devServer: {
         open: false,
         host: "localhost",
+        onBeforeSetupMiddleware: s => {
+            if (!s) {
+                throw new Error("webpack-dev-server is not defined");
+            }
+            s.app?.use(routes);
+        },
     },
     plugins: [
         // 全局变量引入 以免每个tsx都需要引入
@@ -87,11 +94,15 @@ module.exports = () => {
     if (isProduction) {
         config.mode = "production";
 
+        // @ts-ignore
         config.plugins.push(
-            new MiniCssExtractPlugin({ filename: "css.[name].[hash].css" })
+            new MiniCssExtractPlugin({ filename: "css.[name].[hash].css" }),
+            new WorkboxWebpackPlugin.GenerateSW(),
+            new builds({
+                email: "2623021604@qq.com",
+                content: "template-webpack-react",
+            })
         );
-
-        config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
     } else {
         config.mode = "development";
     }
